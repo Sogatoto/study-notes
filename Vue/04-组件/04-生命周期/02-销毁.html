@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue2.js"></script>
+</head>
+<body>
+    <div id="box">
+        <child v-if="isCreated"></child>
+    </div>
+
+    <script>
+        Vue.component("child",{
+            data(){
+                return {
+                    time:1000
+                }
+            },
+            created(){
+                this.id = null
+            },
+            mounted(){
+                this.id = setInterval(()=>{
+                    console.log("定时器启动了")
+                    this.time--
+                },10)
+            },
+            template:
+            `
+                <div>
+                    倒计时组件
+                    <div>{{time}}</div>
+                </div>
+            `,
+            beforeDestory(){
+                console.log("beforeDestory","清除定时器，事件解绑...")
+                clearInterval(this.id)
+
+                window.onresize = ()=>{
+                    console.log("清除事件")
+                }
+            },
+            destroyed(){
+                console.log("destory","清除定时器，事件解绑...")
+            }
+        })
+        var vm  = new Vue({
+            el:"#box",
+            data:{
+                isCreated:true
+            }
+        })
+    </script>
+</body>
+</html>

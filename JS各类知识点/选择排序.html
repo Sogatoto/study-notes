@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //准备一个乱序的数组
+        var arr = [5,8,7,6,3,2,4,9,1]
+        //输出一下
+        console.log(arr)
+
+        for(var j = 0; j<arr.length - 1; j++) {
+            // 假设最小的数字索引是0
+            var minIndex = j
+
+            // 循环遍历数组，从索引 1 位置开始
+            for (var i = j + 1; i < arr.length; i++) {
+                // 判断是不是比我假设索引位置的数字小
+                if (arr[i] < arr[minIndex]){
+                    // 如果条件为真，那么替换 minIndex
+                     minIndex = i
+                }
+            } 
+        
+        //交换索引 0 位置和 minIndex 位置
+        var temp = arr[j]
+        arr[j] = arr[minIndex]
+        arr[minIndex] = temp
+        }
+        console.log(arr)
+    </script>
+</body>
+</html> 

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/Vue3.js"></script>
+</head>
+<body>
+    <div id="box">
+        {{name}}--{{age}}
+        <navbar myname="aaa">
+            <div>11111111</div>
+        </navbar>
+        <siderbar myname="bbb">
+            <div>222222</div>
+        </siderbar>
+    </div>
+    <script>
+        var obj = {
+            data(){
+                return{
+                    name:'张三',
+                    age:18
+                }
+            },
+            methods:{
+
+            }, 
+            computed:{
+
+            },
+            created(){
+                console.log('created')
+            },
+            beforeMounted(){
+                console.log('beforeMounted')
+            },
+            mounted(){
+                console.log('mounted')
+            },
+            //生命周期替换
+
+            // beforeDestory(){
+            //     console.log('beforeDestory')
+            // },
+            // destoryed(){
+            //     console.log('destoryed')
+            // }
+            beforeUnmounted(){
+                console.log('beforeUnmounted')
+            },
+            unmounted(){
+                console.log('unmounted')
+            }
+
+        }
+        var app = Vue.createApp(obj)
+        app.component("navbar",{
+            props:['myname'],
+            template:`
+            <div>我是导航--{{myname}}
+                <slot></slot>
+            </div>`
+        })
+        app.component("siderbar",{
+            props:['myname'],
+            template:`
+            <div>我是导航--{{myname}}
+                <slot></slot>
+            </div>`
+        })
+        app.mount('#box')  
+
+        //vue2 类
+        //vue3 类（>90%一样），hooks(函数式)
+    </script>
+</body>
+</html>

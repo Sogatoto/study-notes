@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/Vue3.js"></script>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li v-for="(item,index) of dataList" :key="item">
+                {{item}}--{{index}}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="(item,key) of obj">
+                {{key}}--{{item}}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="item in 10" v-infinte-scroll>
+                {{item}}
+            </li>
+        </ul>
+    </div>
+     
+    <script>
+        Vue,createApp({
+            data(){
+                return{
+                    dataList:["111","222","333"],
+                obj:{
+                        name:"SeaCode",
+                        age:23,
+                        location:"GanZhou"
+                    }
+                }
+            }
+        }).amount('#box')
+    </script>
+</body>
+</html>

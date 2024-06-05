@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item {
+            overflow: hidden;
+            border: 1px solid lightpink;
+            padding: 10px;
+            width: 400px;
+        }
+        .item img {
+            width: 200px; 
+            height: 300px;
+            float: left;
+        }
+        .film{
+            border: 1px solid lightblue;
+            height: 1500px;
+        }
+        .filmInfo{
+            width: 300px;
+            min-height: 200px;
+            background-color: yellow;
+            position: fixed;
+            right: 50px;
+            top: 100px;
+            border: 1px solid lightgray;
+        }
+    </style>
+    <script src="../lib/Vue2.js"></script>
+    <script src="../lib/axios.js"></script>
+</head>
+<body>
+    
+
+    <div id="box" class="film">
+        <button @click="handleAjax">Ajax</button>
+        <film-item v-for="item in datalist" :key="item.filmId" :mydata="item" @myevent="handleEvent">
+        </film-item>
+        <!-- {{filmData}} -->
+        <film-detail :film-data="filmData"></film-detail>
+    </div>
+
+
+    <script>
+        Vue.component('filmDetail',{
+            props:['filmData'], 
+          template:
+          `
+            <div class="filmInfo">
+                {{filmData}}
+            </div>
+          `  
+        })
+        Vue.component('filmItem',{
+            props:['mydata'],
+          template:
+          `
+            <div class="item">
+                <img :src="mydata.poster" />
+                {{mydata.name}}
+                <button @click="handleClick">详情</button>
+            </div>
+          `,
+          methods:{
+              handleClick(){
+                // console.log(this.mydata.synopsis)
+                this.$emit('myevent',this.mydata.synopsis) 
+              }
+          }
+        })
+        new Vue({
+            el:'#box',
+            data:{
+                datalist : [],
+                filmData:""
+            },
+            methods:{
+                handleAjax(){
+                    fetch("../01-组件/test.json")
+                    .then(res=>res.json())
+                    .then(res=>{
+                            console.log(res.data.films)
+                            this.datalist = res.data.films
+                    })
+                },
+                //自定义事件处理器
+                handleEvent(data){
+                    console.log(data)
+                    this.filmData = data
+                }
+            }
+        })
+    </script>
+</body>
+</html>

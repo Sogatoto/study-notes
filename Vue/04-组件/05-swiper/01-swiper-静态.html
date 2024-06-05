@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/css/swiper.css">  
+    <script src="./lib/js/swiper.js"> </script>
+    <style>
+    .swiper {
+        width: 1200px;
+        height: 600px;
+    }
+    </style>
+</head>
+
+<body>
+    <header>导航</header>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+        
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        
+        <!-- 如果需要滚动条 -->
+        <!-- <div class="swiper-scrollbar"></div> -->
+    </div>
+    F
+    <footer>底部内容</footer>
+
+    
+
+    <script>
+        //初始化swiper
+        new Swiper(".swiper", {
+            // direction: "vertical",//垂直
+            // loop: true,//循环
+            //如果需要分页器
+            pagination: {
+                el: ".swiper-pagination",
+            },
+            loop: true,
+            //自动播放
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            //如果需要前进后退按钮
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            }
+        })
+    </script>
+</body>
+
+</html>0

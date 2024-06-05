@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue2.js"></script>
+    <style>
+        li{
+            list-style: none;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <navbar @myevent="handleEvent"></navbar>
+        <siderbar v-show="isShow"></siderbar>
+    </div>
+
+    <script>
+        Vue.component('navbar',{
+            template:`
+            <div style="background-color: brown;">
+                <button @click="handleClick()">点击</button>-导航栏
+            </div>
+            `
+            ,methods:{
+                handleClick(){
+                    this.$emit('myevent')
+                }
+            }
+        })
+        Vue.component('siderbar',{
+            template:`
+            <div style="background-color: red; ">
+                <ul>
+                    <li style="background-color: aqua; ">钱包</li>
+                    <li style="background-color: aqua; ">余额</li>
+                </ul>
+            </div>
+        `})
+        var vm = new Vue({
+            el:'#box',
+            data:{
+                isShow:true
+            },
+            methods:{
+                handleEvent(){
+                console.log('子组件触发了事件')
+                this.isShow = !this.isShow
+            }
+            }
+        })
+
+        /*
+            父传子---属性
+            子传父---事件
+        */
+    //    var isShow = true;
+    //    function test(){
+    //        isShow = false;
+    //    }
+
+    //    test(isShow)
+    </script>
+</body>
+</html>

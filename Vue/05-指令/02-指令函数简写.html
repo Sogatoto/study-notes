@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/Vue2.js"></script>
+</head>
+<body>
+    <div id="box">
+        <div v-hello=" 'yellow' ">1111111</div>
+        <div v-hello=" 'red' ">2222222</div>
+        <div v-hello="whichColor">3333333</div>
+    </div>
+
+    <script>
+        //指令：为了操作底层DOM。作者给留方案
+
+        //实际应用--可以通过指令知道什么时候dom创建完成，从而进行依赖dom的库的初始化工作
+        Vue.directive("hello",(el,binding)=>{
+            // console.log("hello被调用了");
+            el.style.backgroundColor = binding.value;
+        })
+        var vm = new Vue({
+            el:"#box",
+            data:{
+                whichColor:"blue"
+            }
+        })
+    </script>
+</body>
+</html>

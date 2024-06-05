@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/Vue3.js"></script>
+    <script src="./lib/js/swiper.js "></script>
+    <link rel="stylesheet" href="./lib/css/swiper.css">
+</head>
+
+<body>
+    <div id="box">
+        <!-- <swiper :key = "datalist.length"> -->
+        <swiper v-if="datalist.length" :loop="false">
+            <swiper-item v-for="data in datalist" :key="data">
+                <img :src="data" />
+            </swiper-item>
+        </swiper>
+    </div>
+
+    <script>
+        var obj = {
+            data() {
+                return {
+                    datalist: []
+                }
+            },
+            mounted() {
+                // ajax
+                setTimeout(() => {
+                    this.datalist = [
+                        "https://static.maizuo.com/pc/v5/usr/movie/afe9130dae2dc96a33f4a857bfcf2122.jpg",
+                        "https://static.maizuo.com/pc/v5/usr/movie/6e9f636fe74d026ee0f7448b1fa67fd8.jpg",
+                        "https://static.maizuo.com/pc/v5/usr/movie/a2df646c81c3d6ec2903f33f7307f666.jpg",
+                        "https://static.maizuo.com/pc/v5/usr/movie/6e9f636fe74d026ee0f7448b1fa67fd8.jpg"
+                    ]
+
+                    //过早
+                    
+                }, 2000)
+
+                //初始化过早
+            }
+        }
+        var app = Vue.createApp(obj)
+        app.component("swiperItem", {
+            template:
+            `
+            <div class="swiper-slide">
+                <slot></slot>    
+            </div>
+            `
+            
+        })
+        app.component("swiper", {
+            props:{
+                loop:{
+                    type:Boolean,
+                    default:true
+                }
+            },
+            template:
+                `
+                <div class="swiper">
+                <div class="swiper-wrapper">
+                    <slot></slot>
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+                </div>
+             `,
+            mounted() {
+                console.log("1111")
+                new Swiper(".swiper", {
+                    // direction: "vertical",//垂直 
+                    loop: this.loop,//循环
+                    //如果需要分页器
+                    pagination: {
+                        el: ".swiper-pagination",
+                    },
+                    //自动播放
+                    autoplay: {
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }
+                })
+            },
+            destoryed(){
+                console.log("11111")
+            }
+        })
+        app.mount('#box')
+    </script>
+</body>
+
+</html>

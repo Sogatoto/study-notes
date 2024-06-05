@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/Vue2.js"></script>
+</head>
+<body>
+   <div id="box">
+       {{myname}}
+   </div>
+
+   <script>
+    var vm = new Vue({
+        el:"#box",
+        data:{
+            myname:"SeaCode"
+        },
+        
+        beforeCreate(){
+            console.log("beforeCreate",this.myname);
+        },
+        created(){
+            console.log("created","初始化状态或者挂载到当前实例的一些属性");
+            this.myname = this.myname = "seacode";
+            // this.globalName = "this可以直接访问的属性值";
+            this.user = localStorage.getItem("user");
+        },
+        //模板解析之前最后一次修改模板节点
+        beforeMount(){
+            console.log("beforeMount","模板解析之前最后一次修改模板节点",this.$el)
+            console.log(document.getElementById("box").innerHTML)
+        },
+        //拿到真实的模板节点
+        mounted(){
+            console.log("mounted","拿到真实的dom节点");
+            console.log(document.getElementById("box").innerHTML)
+            //依赖于dom创建之后，才能进行初始化的工作的插件（轮播插件）
+            //订阅 bus.$on
+            //发ajax
+        }
+    })
+
+    //vue组件 生命周期？
+    //vue组件的 钩子函数
+    //vue组建的生命周期钩子函数
+   </script>
+</body>
+</html>

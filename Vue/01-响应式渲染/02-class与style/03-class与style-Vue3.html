@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/Vue3.js"></script>
+</head>
+<body>
+    <div id="box">
+        {{ 10+20}}
+        {{myname}}
+        {{mytext}}
+        <input type="text" v-model = "mytext">
+        <button @click="handleAdd()">add</button>
+    
+        <div :class="classObj">动态切换class-style</div>
+    </div>  
+
+    <script>
+        // new Vue({
+        //     el:"#box"
+        // })
+        var obj = {
+            data(){
+                 return {
+                    myname:"Vue3",
+                    mytext:"",
+                    classObj:{
+                        aa:true,
+                        bb:true,
+                        cc:false
+                    }
+                 }
+            },
+            methods:{
+                handleAdd(){
+                    console.log("add",this.mytext)
+                    this.classObj.dd = true
+                }
+
+            }
+        }
+        Vue.createApp(obj).mount("#box")
+    </script>
+</body>
+</html>

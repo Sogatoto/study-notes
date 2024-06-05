@@ -1,0 +1,31 @@
+
+[2024-05-13T23:13:37.466] [DEBUG] cheese - Url {
+  protocol: 'https:',
+  slashes: true,
+  auth: null,
+  host: 'www.baidu.com:443',
+  port: '443',
+  hostname: 'www.baidu.com',
+  hash: '#tag=3',
+  search: '?id=2',
+  query: 'id=2',
+  pathname: '/path/index.html',
+  path: '/path/index.html?id=2',
+  href: 'https://www.baidu.com:443/path/index.html?id=2#tag=3'
+}
+
+[2024-05-13T23:14:19.245] [DEBUG] cheese - https://www.baidu.com:443/path/index.html?id=2#tag=3
+[2024-05-13T23:14:31.468] [DEBUG] cheese - http://www.abc.com/
+[2024-05-13T23:14:31.469] [DEBUG] cheese - http://www.abc.com/b
+[2024-05-13T23:17:15.311] [DEBUG] cheese - http://www.abc.com/
+[2024-05-13T23:17:15.312] [DEBUG] cheese - http://www.abc.com/b
+[2024-05-13T23:17:15.313] [DEBUG] cheese - URLSearchParams { 'https://www.baidu.com:443/path/index.html?id' => '2#tag=3' }
+[2024-05-13T23:17:55.869] [DEBUG] cheese - http://www.abc.com/
+[2024-05-13T23:17:55.870] [DEBUG] cheese - http://www.abc.com/b
+[2024-05-13T23:17:55.871] [DEBUG] cheese - URLSearchParams { 'https://www.baidu.com:443/path/index.html?id' => '2#tag=3' }
+[2024-05-13T23:17:55.871] [DEBUG] cheese - null
+[2024-05-13T23:18:52.598] [DEBUG] cheese - http://www.abc.com/
+[2024-05-13T23:18:52.600] [DEBUG] cheese - http://www.abc.com/b
+[2024-05-13T23:18:52.600] [DEBUG] cheese - URLSearchParams { 'id' => '2' }
+[2024-05-13T23:18:52.601] [DEBUG] cheese - 2
+

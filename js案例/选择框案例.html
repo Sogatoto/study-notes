@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 200px;
+            padding: 20px;
+            border: 1px solid pink;
+            margin: 30px auto;
+            border-radius: 5px;
+        }
+        hr{
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        全选：<input type="checkbox" name="" id=""><br>
+        <hr>
+        <input type="checkbox" name="" id="">选项一<br>
+        <input type="checkbox" name="" id="">选项二<br>
+        <input type="checkbox" name="" id="">选项三<br>
+        <input type="checkbox" name="" id="">选项四<br>
+    </div>
+    <script>
+        //获取元素
+        var allBtn = document.querySelector('input')
+        var items = document.querySelectorAll('input:nth-child(n + 2)')
+        //给全选按钮绑定事件
+        allBtn.onclick = function(){
+            //刚拿到自己的选中状态
+            var type = allBtn.checked
+            //把选中的效果给每一个选项
+            for(var i = 0; i<items.length; i++){
+                items[i].checked= type
+            }
+        }
+        //给每一个选项循环绑定点击事件
+        for(var i = 0; i < items.length; i++){
+            //给每一个选项绑定点击事件
+            items[i].onclick = function(){
+                //首先假设定义变量，使每一个值都是选中状态 
+                var flag = true
+                //通过循环来验证我们的假设
+                for(var j = 0; j < items.length; j++){
+                    if(items[j].checked === false) {
+                        flag = false
+                        break
+                    }
+                }
+                //把我们得到的结果给全选按钮
+                allBtn.checked = flag
+            }
+        }
+    </script>
+</body>
+</html>

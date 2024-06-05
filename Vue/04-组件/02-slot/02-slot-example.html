@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue2.js"></script>
+    <style>
+        li{
+            list-style: none;
+            margin: 10px;
+        }
+        .a{
+            transform: translateY(-100px);
+            opacity: 0;
+        }
+        .b{
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .x{
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <navbar >
+            <button @click="isShow = !isShow">click</button>
+        </navbar>
+        <siderbar class="a x" :class="isShow && 'b'"></siderbar>
+    </div>
+
+    <script>
+        Vue.component('navbar',{
+            template:`
+            <div style="background-color: brown;">
+                导航栏---<slot></slot>
+            </div>
+            `
+        })
+        Vue.component('siderbar',{
+            template:`
+            <div style="background-color: red; ">
+                <ul>
+                    <li>钱包</li>
+                    <li>余额</li>
+                </ul>
+            </div>
+        `})
+        var vm = new Vue({
+            el:'#box',
+            data:{
+                isShow:false 
+            }
+        })
+
+        /*
+            父传子---属性
+            子传父---事件
+        */
+    //    var isShow = true;
+    //    function test(){
+    //        isShow = false;
+    //    }
+
+    //    test(isShow)
+    </script>
+</body>
+</html>

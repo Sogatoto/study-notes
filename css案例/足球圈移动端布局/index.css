@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+html,body{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+}
+header{
+    height: 44px;
+    background-color: #0cc440;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header div{
+    width: 60px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    font-size: 12px;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif; 
+}
+header div:nth-child(1){
+    border-radius: 12px 0 0 12px;
+    background-color: #63d985;
+    color: white;
+}
+header div:nth-child(2){
+    border-radius : 0 12px 12px 0;
+    background-color : #3dd066;
+    color : #a9e4b4;
+}
+footer{
+    height: 44px;
+    background-color: white;
+    color: #d5d5d7;
+}
+section{
+    flex: 1;
+    overflow: auto;
+}
+section .navs{
+    display: flex;
+}
+
+section .navs li{
+    flex: 1;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    color: #8c8c8c;
+    border-bottom: 1px solid #d9d9d9;
+}
+section .navs li:hover{
+    color: #14bf4d;
+    border-bottom: 2px solid #08c63e;
+}
+section .list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+section .list>div{
+    width: 49%;
+    margin-top: 4px;
+    border: 1px solid whitesmoke;
+}
+section .list>div img{
+    width: 100%;
+    box-sizing: border-box;
+}
+section .list>div p{
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    text-indent: 10px;
+}
+footer ul{
+    display: flex;
+    height: 100%;
+}
+footer .bar{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+footer .bar:hover{
+    color: #0cc440;
+}
+footer  .bar:nth-child(3){
+    position: relative;
+}
+footer  .bar:nth-child(3) i{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #dadada;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: -8px;
+    text-align: center;
+    line-height: 50px;
+    margin-left: -25px;
+    font-size: 50px;
+    background-color: #fff;
+}
+footer  .bar i{
+    height: 21px;
+    line-height: 21px;
+    font-size: 25px;
+    text-align: center;
+}
+footer .bar span{
+    height: 17px;
+    text-align: center;
+    line-height: 17px;
+    font-size: 12px;
+}

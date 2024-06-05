@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/Vue2.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+            display: flex;
+        }
+        li{
+            flex: 1;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+        }
+        .active{
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li v-for="(data,index) in datalist" :class="current===index?'active':'' " @click="handleClick(index)">{{data}}</li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el:"#box",
+            data:{
+                datalist:["首页","列表","个人中心"],
+                current:0
+            },
+            methods:{
+                handleClick(index){
+                    this.current = index 
+                }
+            }
+        })
+    </script>
+</body>
+</html>

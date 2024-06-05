@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/Vue3.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        
+        }
+        li{
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        li img{
+            width: 100px;
+        }
+        #box{
+            margin: 100px auto;
+        }
+        button{
+            width: 40px;
+            margin: 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <input style="margin-left:25%;" type="checkbox" v-model="isAll" @change="handleAllChecked"/>全选/全不选
+        <ul>
+            <li v-for="(item, index) in datalist" :key="item.id">
+                <input type="checkbox" v-model="checkList" :value="item" @change="handleItemChecked"/>
+                <img :src="item.pic" />
+                <div>
+                    <div>{{item.name}}</div>
+                    <div style="color: red;">￥：{{item.price}}</div>
+                </div>
+                <div>
+                    <button @click="item.number--" :disabled="item.number===1">-</button>
+                    <span>{{item.number}}</span>
+                    <button @click="item.number++" :disabled="item.number===item.limit">+</button>
+                </div>
+                <div>
+                    <button @click="handleDelete(index,item.id)">删除</button>
+                </div>
+            </li>
+        </ul>
+        <div style="margin: 20px auto;text-align: center;">总金额：{{ computedSum }}</div>
+        {{checkList}}
+    </div>
+
+    <script>
+        var obj = {
+            data(){
+                return {
+                    isAll:false,
+                    checkList:[], //勾选的购物车数据
+                    datalist:[
+                    {
+                        name:"教资考试教材",
+                        price:10,
+                        number:1,
+                        id:1,
+                        limit:5,//限购
+                        pic:"./2.webp"
+                    },
+                    {
+                        name:"教资面试教材",
+                        price:20,
+                        number:1,
+                        id:2,
+                        limit:10,//限购
+                        pic:"./2.webp"
+                    },
+                    {
+                        name:"教资综合教材",
+                        price:30,
+                        number:1,
+                        id:3,
+                        limit:15,//限购
+                        pic:"./2.webp"
+                    }
+                ]
+                }
+            },
+            methods:{
+                
+                handleDelete(index,id){
+                    //删除 datalist -- 靠index
+                    this.datalist.splice(index, 1)
+                    //删除 checkList -- 靠id
+                    // this.checkList.splice(index, 1)
+
+                    this.checkList = this.checkList.filter(item => item.id!==id)
+                    this.handleItemChecked()
+                },
+                handleAllChecked(){
+                    if(this.isAll){
+                        this.checkList = this.datalist
+                    } else {
+                        this.checkList = []
+                    }
+                    
+                },
+                handleItemChecked(){
+                    if(this.checkList===this.datalist){
+                        this.isAll = !this.isAll
+                    } else{
+                        this.isAll = false
+                    }
+                }
+            },
+            computed:{
+                computedSum(){
+                    var total = 0
+                    //累加计算 checkList 数组的每一项的价格*数量
+                    this.checkList.forEach(item => {
+                        total += item.price*item.number
+                    })
+                    return total
+                },
+            }
+        }
+        var vm = Vue.createApp(obj).mount("#box")
+    </script>
+</body>
+</html>

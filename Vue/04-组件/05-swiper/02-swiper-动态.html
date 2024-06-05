@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/css/swiper.css">  
+    <script src="./lib/js/swiper.js"> </script>
+    <style>
+    .swiper {
+        width: 1200px;
+        height: 600px;
+    }
+    </style>
+</head>
+
+<body>
+    <header>导航</header>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+        
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        
+        <!-- 如果需要滚动条 -->
+        <!-- <div class="swiper-scrollbar"></div> -->
+    </div>
+    
+    <footer>底部内容</footer>
+
+    
+
+    <script>
+        setTimeout(() => {
+            var list  = ["aaa", "bbb", "ccc"];
+            var newlist = list.map(item => `<div class="swiper-slide">${item}</div>`)
+            
+            var owrapper = document.querySelector(".swiper-wrapper");
+            owrapper.innerHTML = newlist.join("");
+            //dom插入完了之后再 初始化swiper
+            init()
+        },200)
+        //初始化swiper
+       function init(){
+        new Swiper(".swiper", {
+            // direction: "vertical",//垂直 
+            loop: true,//循环
+            //如果需要分页器
+            pagination: {
+                el: ".swiper-pagination",
+            },
+            //自动播放
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            //如果需要前进后退按钮
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            }
+        })
+       }
+    </script>
+</body>
+
+</html>0

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/Vue2.js"></script>
+</head>
+<body>
+    <div id="box">
+        <!-- input change事件区别 -->
+        <input type="text"  v-model="mytext"/>
+        <ul>
+            <li v-for="data in dataList" :key="data">
+                {{data}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:"#box",
+            data:{
+                mytext:"",
+                originList:["aaa","bbb","ccc","ddd","acd","abc","abd","bcd"],
+                dataList:["aaa","bbb","ccc","ddd","acd","abc","abd","bcd"]
+            },
+            watch:{
+                mytext(newval){
+                    console.log("改变了",newval)
+                    setTimeout(()=>{
+                        this.dataList = this.originList.filter(item=>item.includes(newval))
+                    },1000)
+                }
+            }
+        })
+        var arr = ["aaa","bbb","ccc","ddd","acd","abc","abd","bcd"]
+    </script>
+</body>
+</html>

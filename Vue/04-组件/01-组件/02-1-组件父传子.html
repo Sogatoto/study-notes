@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue2.js"></script>
+</head>
+<body>
+    <div id="box">
+        <div style="background-color: aqua;">根组件</div>
+        
+        <navbar myname="电影" :myright="false" :myparent="parent"></navbar>
+        <navbar myname="影院" :myparent="parent"></navbar>
+    </div>
+    
+    <script>
+        Vue.component('navbar',{
+            // props: ['myname','myright'], //接受myname和myright
+            // props: {
+            //     myname:String,
+            //     myright:Boolean
+            // },//接受myname属性，属性验证
+
+            props: {
+                myname:{
+                    type:String,
+                    default:""
+                },
+                myright:{
+                    type:Boolean,
+                    default:true
+                },
+                myparent:{
+                    type:String,
+                    default:""
+                }
+            },//接受myname属性，属性验证，默认属性
+
+            template: `<div>
+                <button>left</button>
+                <span>{{myname}}---{{myparent}}</span>
+                <button v-show="myright">right</button> 
+            </div>`
+        })
+            var vm = new Vue({
+            el: '#box',
+            data: {
+                parent:"111111"
+            }
+        })//创建根组件
+    </script>
+</body>
+</html>

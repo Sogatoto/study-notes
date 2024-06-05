@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 进场动画 */
+        .SeaCode-enter-active {
+            animation: aaa 1.5s;
+        }
+        /* 出场动画 */
+        .SeaCode-leave-active {
+            animation: aaa 0.5s reverse;
+        }
+        /* 入场动画 */
+        @keyframes aaa {
+            from {
+                    opacity: 0;
+                    transform: translateX(100px);
+                }
+            to {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+        }
+    </style>
+    <script src="./lib/Vue2.js"></script>
+</head>
+<body>
+    <div id="box">
+        <button @click="isShow=!isShow">Toggle</button>
+        <transition enter-active-class="SeaCode-enter-active" leave-active-class="SeaCode-leave-active">
+            <div v-show="isShow">11111111111111</div>
+        </transition>
+
+        <transition name="SeaCode">
+            <div v-if="isShow">22222222222222</div>
+        </transition>
+    </div>
+
+    <script>
+        // 创建Vue实例,得到 ViewModel
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                isShow:false
+            }
+        })
+    </script>
+</body>
+</html>

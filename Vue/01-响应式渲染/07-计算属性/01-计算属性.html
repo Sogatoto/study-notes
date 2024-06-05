@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/Vue2.js"></script>
+</head>
+<body>
+    <div id="box">
+        {{ myname.substring(0,1).toUpperCase() + myname.substring(1) }}
+
+        {{ myMethodName() }}
+        {{ myMethodName() }}
+        {{ myMethodName() }}
+
+        {{ myComputedName }}
+        {{ myComputedName }}
+        {{ myComputedName }}
+
+        
+    </div>
+
+    <script>
+
+        //计算属性(防止模板过重，难以维护)，负责逻辑放在计算属性行中来写。
+
+        var vm = new Vue({
+            el:"#box",
+            data:{
+                myname:"kerwin"
+            },
+            // 方法
+            methods:{
+                myMethodName(){
+                    console.log("myComputedName--方法")
+                    return this.myname.substring(0,1).toUpperCase() + this.myname.substring(1)
+                    
+                }
+            },
+            computed:{
+                myComputedName(){
+                    console.log("myComputedName--计算属性")
+                    return this.myname.substring(0,1).toUpperCase() + this.myname.substring(1)
+                }
+            }
+        })
+
+        /*
+            0. data => 状态,被拦截
+            1. methods方法 => 事件绑定，逻辑计算。可以不用 return ，没有缓存
+            2. 计算属性（重视结果） => 解决模板过重问题，必须有 return ，只求结果，有缓存，同步。
+            3. watch (重视过程)， 监听一个值的改变，不用返回值，异步同步
+        */
+    </script>
+</body>
+</html>

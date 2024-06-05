@@ -1,0 +1,107 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+html,body{
+    height: 1100px;
+}
+.con{
+    width: 752px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+.text{
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+.Max{
+    width: 1200px;
+    height: 100%;
+    margin: 40px auto 100px;
+    padding-top: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px 0 rgba(120, 143, 184, .26);
+}
+.top{
+    text-align: center;
+}
+.top span{
+    display: block;
+    font-size: 24px;
+    color: black;
+    font-weight: 700;
+    padding-bottom: 40px;
+}
+.top p{
+    text-align: left;
+    font-style: 16px;
+    line-height: 25px;
+    white-space: normal;
+    color: #666;
+    font-weight: 700;
+}
+
+.top p span{
+    color: orange;
+    display: inline-block;
+    font-size: 16px;
+    padding-bottom: 0;
+}
+.city p span{
+    color: red;
+}
+.city select{
+    margin-left: 10px;
+    width: 100px;
+    height: 25px;
+    padding-left: 10px;
+    background-color: #fff;
+    border: 1px solid #cccccc;
+}
+.city select:hover{
+    border: 1px solid black;
+}
+.single p span{
+    color: red;
+}
+
+.label{
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+.p-text {
+    color:black;
+    font-weight: 500;
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+.distance{
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+.couple p span{
+    color: red;
+}
+.contact input{
+    outline: none;
+    height: 30px;
+    width: 100%;
+    padding-left: 10px;
+    border: 1px solid #cccccc;
+}
+.contact input:hover{
+    border: 1px solid black;
+}
+
+.size{
+    width: 752px;
+    height: 120px;
+    /* 重新设置大小 */
+    resize: none;
+    outline: none;
+    border: 1px solid #cccccc;
+}
+.size:hover{
+    border: 1px solid black;
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+        header{
+            height: 45px;
+            background: white;
+        }
+        header ul{
+            display: flex;
+            overflow: auto;
+
+        }
+        header ul li{
+            /* 使子类不被挤压 */
+            flex-shrink: 0;
+            line-height: 45px;
+            padding:0 10px;
+        }
+        header ul li:hover{
+            color: #e96062;
+        }
+        footer{
+            height: 50px;
+            background: gray;
+        }
+        section{
+            flex: 1;
+            overflow: auto;
+            display: flex;
+        }
+        section ul{
+            width: 85px;
+            overflow: auto;
+        }
+        section ul li{
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            font-size: 14px;
+            background-color: #f8f8f8;
+        }
+        section ul li:hover{
+            background-color: #fff;
+            color: #e96062;
+        }
+        section>div{
+            flex: 1;
+            background-color: yellowgreen;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            overflow: auto;
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        section .content>div{
+            height: 101px;
+            width: 33.33%;
+            text-align: center;
+        }
+        section .content>div img{
+            width: 60px;
+            height: 50px;
+            margin-top: 11px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <ul>
+            <li>热门推荐</li>
+            <li>手机数码</li>
+            <li>京东超市</li>
+            <li>家用电器</li>
+            <li>电脑办公</li>
+            <li>玩具乐器</li>
+            <li>家居厨具</li>
+            <li>食品酒饮</li>
+            <li>个护清洁</li>
+            <li>内衣配饰</li>
+            <li>母婴童装</li>
+            <li>自有品牌</li>
+        </ul>
+    </header>
+    <section>
+        <ul>
+            <li>热门推荐</li>
+            <li>手机数码</li>
+            <li>京东超市</li>
+            <li>家用电器</li>
+            <li>电脑办公</li>
+            <li>玩具乐器</li>
+            <li>家居厨具</li>
+            <li>食品酒饮</li>
+            <li>个护清洁</li>
+            <li>内衣配饰</li>
+            <li>母婴童装</li>
+            <li>自有品牌</li>
+        </ul>
+
+        <div class="content">
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6在线教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6在线教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6在线教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6在线教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6在线教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6在线教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6在线教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6在线教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6教程</p>
+            </div>
+            <div>
+                <img src="../安利首页/img/item.png" alt="">
+                <p>ES6 教程</p>
+            </div>
+        </div>
+    </section>
+    <footer>尾部导航栏</footer>
+</body>
+</html>

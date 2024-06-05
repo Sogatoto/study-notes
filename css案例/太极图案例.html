@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: lightblue;
+        }
+        div{
+            width: 400px;
+            height: 400px;
+            margin: 50px auto;
+            display: flex;
+            background:linear-gradient(white 50%,black 50%);
+            align-items: center;
+            border-radius: 50%;
+        }
+        div::before{
+            content: "";
+            width: 200px;
+            height: 200px;
+            display: block;
+            background:radial-gradient(black 20%,white 30%);
+            border-radius: 50%;
+        }
+        div::after{
+            content: "";
+            width: 200px;
+            height: 200px;
+            display: block;
+            background:radial-gradient(white 20%,black 30%);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

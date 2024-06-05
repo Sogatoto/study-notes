@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/Vue2.js"></script>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        {{myname}}-{{myage}}
+        {{10>20?'aaa':'bbb'}}
+        <img :src="imgPath" />
+        <div :class="whichColor">切换背景色</div>
+        <div :class="isColor?'red':'yellow'">切换背景色</div>
+        <button @click = "handleChange()">change</button>
+
+        <!-- v-show v-if 指令 -->
+        <div v-show="isShow">动态显示和隐藏</div>
+        <div v-if="isCreated">动态创建和删除</div>
+
+        <!-- v-for 列表渲染的指令 -->
+        <ul>
+            <li v-for="data in list">
+                {{data}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(item,index) in list">
+                {{item}}-{{index}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#box",
+            data:{
+                myname:"M3Sins",
+                myage:100,
+                whichColor:'red',
+                isColor:true,
+                imgPath:"",
+                isShow:false,
+                isCreated:true,
+                list:["aaa","bbb","ccc","ddd"]
+            },
+            methods:{
+                handleChange(){
+                    this.myname = "ssss",
+                    this.myage = 45,
+                    this.whichColor = "yellow",
+                    this.isColor = !this.isColor,
+                    this.imgPath = "https://sponsors.vuejs.org/images/bit.svg?v2",
+                    this.isShow = !this.isShow,
+                    this.isCreated = !this.isCreated
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/Vue2.js"></script>
+</head>
+<body>
+    <div id="box">
+        <!-- 双向绑定了一个输入框的value -->
+        <input type="text" v-model="mytext" />
+        <button @click = "handleAdd()">add</button>
+
+        <ul v-show="datalist.length">
+            <li v-for="(item,index) in datalist">
+                {{item}}
+                <button @click = "handleDel(index)">del</button>
+            </li>
+        </ul>
+        <div v-show="!datalist.length">无内容......</div>
+    </div>
+
+    <script>
+        var vm = new Vue ({
+            el:"#box",
+            data:{
+                datalist:["张三","李四","王五","赵六"],
+                mytext:"aaaaa"
+            },
+            methods:{
+                handleAdd(){
+                    // console.log("获取数据...",this.mytext)
+                    this.datalist.push(this.mytext),
+                    //清空输入框
+                    this.mytext = ""
+                },
+                handleDel(index){
+                    this.datalist.splice(index,1)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        .con{
+            width: 1000px;
+            margin: 0 auto;
+            padding-top: 40px;
+        }
+        .Max{
+            width: 1200px;
+            height: 100%;
+            margin: 40px auto 100px;
+            padding-top: 10px;
+            background-color: whitesmoke;
+            border-radius: 8px;
+            box-shadow: 0 15px 30px 0 rgba(120, 143, 184, .26);
+        }
+        .first{
+            margin-top: 50px;
+            height: 370px;
+            border: 2px solid skyblue;
+        }
+        .Max legend{
+            text-align: left;
+            margin-left: 20px;
+            font-size: 20px;
+        }
+        .num{
+            width: 1000px;
+            height: 350px;
+        }
+        li{
+            list-style: none;
+            width: 300px;
+            height: 25px;
+            margin-right: 33px;
+            float: left;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        .text{
+            margin-left: 10px;
+            margin-right: 10px;
+            display: inline-block;
+            line-height: 25px;
+            text-align: right;
+        }
+        li input{
+            outline: none;
+        }
+        li select{
+            width: 155px;
+            height: 25px;
+            padding-left: 5px;
+            background-color: #fff;
+            border: 1px solid #cccccc;
+        }
+        .long{
+            width: 933px;
+            margin-right: 33px;
+            float: right;
+        }
+        .input{
+            width: 817px;
+        }
+    </style>
+</head>
+<body>
+    <div class="Max">
+        
+        <fieldset class="first con">
+            <legend>发运需求</legend>
+            <ul class="num">
+                <li><p class="text">运输需求编号:</p><input type="text"></li>
+                <li></li>
+                <li><p class="text">状态:</p><input type="text"></li>
+                <li><p class="text">申运单位:</p><select name="" id="">
+                    <option value="">复肥供应部</option>
+                    <option value="">饲料供应部</option>
+                    <option value="">原料供应部</option>
+                    <option value="">蔬菜供应部</option>
+                    <option value="">水果供应部</option>
+                </select></li>
+                <li><p class="text">联系人:</p><input type="text"></li>
+                <li><p class="text">联系电话:</p><input type="text"></li>
+                <li><p class="text">目的地（到站）:</p><input type="text"></li>
+                <li><p class="text">收货人名称:</p><input type="text"></li>
+                <li><p class="text">收货人地址:</p><input type="text"></li>
+                <li><p class="text">联系人及电话:</p><input type="text"></li>
+                <li><p class="text">要求发货日期:</p><input type="text"></li>
+                <li><p class="text">要求到货日期:</p><input type="text"></li>
+                <li><p class="text">发站:</p><input type="text"></li>
+                <li><p class="text">费用类型:</p><select name="" id="">
+                    <option value="">我司自付</option>
+                    <option value="">货到付款</option>
+                    <option value="">月结</option>
+                </select></li>
+                <li><p class="text">发运类型:</p><select name="" id="">
+                    <option value="">铁路</option>
+                    <option value="">陆运</option>
+                    <option value="">空运</option>
+                    <option value="">海运</option>
+                </select></li>
+                <li class="long"><p class="text">发货备注:</p><input class="input" type="text"></li>
+                <li><p class="text">需求录制人:</p><input type="text"></li>
+                <li></li>
+                <li><p class="text">需求录制日期:</p><input type="text"></li>
+            </ul>
+        </fieldset>
+    </div>
+</body>
+</html>

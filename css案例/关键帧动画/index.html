@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0; 
+            margin: 0;
+        }
+        body{
+            background: lightpink;
+        }
+        .banner{
+            width:95px;
+            height: 450px;
+            margin: 100px auto;
+            border: 2px solid whitesmoke;
+            overflow: hidden;
+        }
+        .swiper{
+            width: 650px;
+            height: 450px;
+            background: url(./jump.jpg);
+            animation: run 1s step-end infinite;
+        }
+        @keyframes run{
+            0%{
+                background-position: -20px 0;
+            }
+            16%{
+                background-position: -108px 0;
+            }
+            32%{
+                background-position: -201px 0;
+            }
+            48%{
+                background-position: -294px 0;
+            }
+            64%{
+                background-position: -387px 0;
+            }
+            80%{
+                background-position: -480px 0;
+            }
+            100%{
+                background-position: -573px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="swiper">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul, ol, li{
+            list-style: none;
+        }
+        img{
+            width: 100%;
+            height: 800px;
+            display: block;
+        }
+        .banner{
+            width: 100%;
+            height:800px;
+            position: relative;
+            margin: 100px auto;
+        }
+        .banner > ul{
+            width: 100%;
+            height: 800px;
+            position: relative;
+        }
+        .banner > ul > li{
+            width: 100%;
+            height: 800px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: opacity .5s linear;
+        }
+        .banner > ul > li.active{
+            opacity: 1;
+        }
+        .banner > ol {
+            width: 200px;
+            height: 30px;
+            position: absolute;
+            left: 30px;
+            bottom: 30px;
+            background-color: rgba(0, 0, 0, .3);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 15px;
+        }
+        .banner > ol > li {
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .banner > ol > li.active{
+            background-color: orange;
+        }
+        .banner > div{
+            width: 40px;
+            height: 60px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, .3);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: #fff;
+        }
+        .left{
+            left: 0;
+        }
+        .right{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner" id="banner">
+        <ul class="imgBox">
+            <li class="active"><img src="./img/1.jpg" ></li>
+            <li><img src="./img/2.jpg" ></li>
+            <li><img src="./img/3.jpg" ></li>
+            <li><img src="./img/4.png" ></li>
+        </ul>
+
+        <ol>
+            <li data-i="0" class="point active"></li>
+            <li data-i="1" class="point"></li>
+            <li data-i="2" class="point"></li>
+            <li data-i="3" class="point"></li>
+        </ol>
+        <div class="left">&lt;</div>
+        <div class="right">&gt;</div>
+    </div> 
+
+    <script>
+        //获取所有承载图片的 li 和所有承载焦点的 li
+        var imgs = document.querySelectorAll('ul > li')
+        var points = document.querySelectorAll('ol > li')
+        var banner = document.getElementById('banner')
+
+        //准备一个变量，表示当前是第几张，默认是 0 ，因为默认显示的索引是第0张
+        var index = 0
+        //书写一个切换下一张的函数
+        //约定：
+        //  参数为true，切换下一张
+        //  参数为false，切换上一张
+        //  参数为数字，切换到指定哪一张
+        function changeOne(type){
+            //让当前的这一张消失
+            imgs[index].className = ''
+            points[index].className = ''
+
+            //根据 type 传递来的参数，来切换 index 的值
+            if(type === true) {
+                index++
+            }else if (type === false){
+                index--
+            }else{
+                index = type
+            }
+            //判定一下 index 的边界值
+            if(index >= imgs.length) {
+                index = 0
+            }if(index < 0 ) {
+                index = imgs.length - 1
+            }
+
+            //让改变后的这一张可以显示出来
+            imgs[index].className = 'active'
+            points[index].className = 'active'
+        }
+        //给轮播图区域盒子绑定点击事件
+        banner.onclick = function(e){
+            //判断点击的是左按钮
+            if(e.target.className === 'left'){
+                //切换上一张，调用 changOne 方法，传递参数为false
+                changeOne(false)
+            }
+            //判断点击的是右按钮
+            if(e.target.className === 'right'){
+                //切换下 一张，调用 changOne 方法，传递参数为true
+                changeOne(true)
+            }
+            //判断点击的焦点盒子
+            if(e.target.className === 'point'){
+                //拿到自己身上记录的索引
+                var i = e.target.dataset.i - 0
+                //切换到某一张，调用 changOne 方法，传递参数为i
+                changeOne(i)
+                // console.log("111")
+            } 
+        }
+
+        
+        
+        
+    </script>
+</body>
+</html>

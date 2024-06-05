@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue2.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        footer ul{
+            display: flex;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 40px;
+        }
+        footer ul li{
+            flex: 1;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            background-color: lightcoral;
+            color: lightblue;
+            list-style: none;
+        }
+        /* 进场动画 */
+        .lefttoright-enter-active {
+            animation: aaa 1.5s;
+        }
+        /* 出场动画 */
+        .lefttoright-leave-active {
+            animation: aaa 0.5s reverse;
+        }
+        /* 入场动画 */
+        @keyframes aaa {
+            from {
+                    opacity: 0;
+                    transform: translateX(-100%);
+                }
+            to {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <navbar @myevent="handleEvent"></navbar>
+        
+            <siderbar v-show="isShow" mode="lefttoright"></siderbar>
+        
+    </div>
+
+    <script>
+        Vue.component('navbar',{
+            template:`
+            <div style="background-color: brown;">
+                <button @click="handleClick()">点击</button>-导航栏
+            </div>
+            `
+            ,methods:{
+                handleClick(){
+                    this.$emit('myevent')
+                }
+            }
+        })
+        Vue.component('siderbar',{
+            props:["mode"],
+            template:`
+            <transition :name="mode">
+            <div style="background-color: red; ">
+                <ul>
+                    <li style="background-color: aqua; ">钱包</li>
+                    <li style="background-color: aqua; ">余额</li>
+                </ul>
+            </div>
+            </transition>
+        `})
+        var vm = new Vue({
+            el:'#box',
+            data:{
+                isShow:true
+            },
+            methods:{
+                handleEvent(){
+                console.log('子组件触发了事件')
+                this.isShow = !this.isShow
+            }
+            }
+        })
+
+        /*
+            父传子---属性
+            子传父---事件
+        */
+    //    var isShow = true;
+    //    function test(){
+    //        isShow = false;
+    //    }
+
+    //    test(isShow)
+    </script>
+</body>
+</html>

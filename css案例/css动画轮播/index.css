@@ -1,0 +1,50 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.banner{
+    width: 590px;
+    height: 470px;
+    margin: 100px auto;
+    overflow: hidden;
+
+}
+.swiper{
+    width: 2950px;
+    height: 470px;
+    animation: run 10s linear infinite;
+}
+
+.swiper img{
+    float: left;
+}
+
+@keyframes run {
+    0%{
+        transform: translateX(0);
+    }
+    5%{
+        transform: translateX(-590px);
+    }
+    25%{
+        transform: translateX(-590px);
+    }
+    30%{
+        transform: translateX(-1180px);
+    }
+    50%{
+        transform: translateX(-1180px);
+    }
+    55%{
+        transform: translateX(-1770px);
+    }
+    75%{
+        transform: translateX(-1770px);
+    }
+    80%{
+        transform: translateX(-2360px);
+    }
+    100%{
+        transform: translateX(-2360px);
+    }
+}

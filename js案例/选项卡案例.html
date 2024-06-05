@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul,li,ol{
+            list-style: none;
+        }
+        .box{
+            width: 600px;
+            height: 400px;
+            margin: 100px auto;
+            border: 3px solid whitesmoke;
+            display: flex;
+            flex-direction: column;
+        }
+        .box > ul{
+            height: 60px;
+            display: flex;
+        }
+        .box > ul >li{
+            flex: 1;
+            background-color: skyblue;
+            color: #fff;
+            font-size:30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .box > ul > li.active{
+            background-color: orange;
+        }
+        .box > ol{
+            flex: 1;
+            position: relative;
+        }
+        .box > ol > li{
+            background-color: lightsalmon;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            color: #fff;
+            font-size: 100px;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+        .box > ol > li.active{
+            display: flex;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <ol>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+    </div>
+
+    <script>
+        //获取所有元素
+        btns = document.querySelectorAll('ul > li')
+        tabs = document.querySelectorAll('ol > li')
+        //给所有的btns绑定点击事件
+        btns.forEach(function (item, index) {
+            
+            item.onclick = function() {
+                //给所有 btns 和 tabs 里面所有的内容取消active类名
+                btns.forEach(function(t, i) {
+                    t.className = ''
+                    tabs[i].className = ''
+                })
+
+                //当前点击的按钮和索引对应的盒子添加 active 类名
+                item.className = 'active'
+                tabs[index].className = 'active'
+            }
+                        
+        });
+    </script>
+</body>
+</html>

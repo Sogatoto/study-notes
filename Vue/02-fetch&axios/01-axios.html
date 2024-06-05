@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+            overflow: hidden;
+            padding: 10px;
+        }
+        li img{
+            float: left;
+            width: 100px;
+        }
+    </style>
+    <script src="./lib/Vue2.js"></script>
+    <script src="./lib/axios.js"></script>
+</head>
+<body>
+    <div id="box">
+        <button @click="handleClick()">ajax-fetch1</button>
+        <ul>
+            <li v-for="data in datalist" :key="data.filmId">
+                <img :src="data.poster" />
+                <div>{{data.name}}</div>
+                <div>观众评分：{{data.grade}}</div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#box',
+            data:{
+                datalist:[]
+            },
+            methods:{
+                handleClick(){
+                    axios.get('./json/maoyan.json').then(res=>{
+                        console.log(res.data);
+                        this.datalist = res.data.data.films;
+                    })
+                }
+            }
+        })
+
+        /*
+            get url路径？ name=SeaCode&age=100
+            post body 请求体
+                (1)x-www-form-urlencoded,name=SeaCode&age=100
+                (2)json,{name:'SeaCode',age:100}
+            
+            axios.post(url,data,config)
+                url 请求的路径
+                data 请求体
+                config 配置信息
+        */
+    </script>
+</body>
+</html>
